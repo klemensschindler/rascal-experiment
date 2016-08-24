@@ -11,12 +11,12 @@ public class RascalInterop {
     public static void main(String[] args) throws URISyntaxException {
         JavaToRascal j2r = new JavaToRascal(new PrintWriter(System.out), new PrintWriter(System.err));
 
-        IRascalSearchPathContributor modulePath = new URIContributor(URIUtil.createFileLocation("C:/Users/schindlerk/workspace/RascalInterop/src"));
+        IRascalSearchPathContributor modulePath = new URIContributor(URIUtil.createFileLocation("C:/repo/github/rascal-experiment/RascalInterop/src"));
         j2r.getEvaluator().addRascalSearchPathContributor(modulePath);
         
         try {
         	System.out.println("Eval: import MyTest;");
-            j2r.eval("import MyTest;"); // null pointer exception
+            j2r.voidValue("import MyTest;"); // Exception
             j2r.eval("hello();");
         } catch (Exception e) {
             System.out.println("EXCEPTION: " + e.getClass() + " " + e.getMessage());
